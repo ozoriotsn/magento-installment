@@ -1,0 +1,17 @@
+Abra o arquivo view.phtml do seu tema (app/design/frontend/default/seu-tema/template/catalog/product/view.phtml).
+
+Próximo a linha 100 insira o código abaixo: 
+
+<?php if($_product->getTypeId() == 'configurable' && Mage::getStoreConfig('parcelamento/parcelamento_general/enabled')): ?>
+<?php echo $this->getChildHtml("valores"); ?>
+<?php endif; ?>
+
+
+
+Open the view.phtml file for your theme (app / design / frontend / default / your-theme / template / catalog / product / view.phtml).
+
+Next to line 100 enter the code below:
+
+<?php if($_product->getTypeId() == 'configurable' && Mage::getStoreConfig('parcelamento/parcelamento_general/enabled')): ?>
+<?php echo $this->getChildHtml("valores"); ?>
+<?php endif; ?>

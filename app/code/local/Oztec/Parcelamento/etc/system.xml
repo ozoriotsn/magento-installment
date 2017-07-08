@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <parcelamento translate="label" module="parcelamento">
+            <label>Oztec</label>
+            <sort_order>110</sort_order>
+        </parcelamento>
+    </tabs>
+    <sections>
+        <parcelamento translate="label" module="parcelamento">
+            <class>separator-top</class>
+            <label>Parcelamento</label>
+            <tab>parcelamento</tab>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <parcelamento_general translate="label">
+                    <label>Configurações</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                    	<enabled translate="label">
+                        <label>Ativar</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>1</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+						<comment>Selecione para ativar/desativar o módulo.</comment>
+						</enabled>
+					    <parcelamento_jquery translate="label">
+                        <label>Habilitar jQuery</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                        <sort_order>2</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                        <comment>Desabilite se estiver sendo carregado por outro módulo.</comment>
+                        </parcelamento_jquery>
+                        <parcelamento_xparcelas translate="label">
+                        <label>Quantidade de parcelas</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>3</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+				        <comment>Digite a quantidade máxima de parcelas.</comment>
+                        </parcelamento_xparcelas>
+			            <parcelamento_desconto translate="label">
+                        <label>Desconto à vista</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>4</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+						<comment>Digite o valor para o desconto à vista.</comment>
+                        </parcelamento_desconto>
+
+
+                        <parcelamento_juros translate="label">
+                              <label>Juros da parcelas</label>
+                              <frontend_type>text</frontend_type>
+                              <sort_order>5</sort_order>
+                              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+                              <show_in_store>1</show_in_store>
+                  <comment>Digite o valor do juro ex: 2= 2%</comment>
+                </parcelamento_juros>
+
+                <parcelamento_juros_parcela translate="label">
+                      <label>Parcela com Juros</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>5</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+          <comment>Digite a parcela que recebera juros ex 6 = 6x sexta parcela em diante recebera juros</comment>
+        </parcelamento_juros_parcela>
+
+
+
+
+                    </fields>
+                </parcelamento_general>
+            </groups>
+        </parcelamento>
+    </sections>
+</config>

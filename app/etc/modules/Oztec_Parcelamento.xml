@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Oztec_Parcelamento>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Oztec_Parcelamento>
+	</modules>
+</config>

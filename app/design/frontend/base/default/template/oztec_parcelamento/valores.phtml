@@ -1,0 +1,121 @@
+<?php
+$_product = $this->getProduct();
+$preco = $_product->getPrice();
+
+$parcela_com_juros = Mage::getStoreConfig('parcelamento/parcelamento_general/parcelamento_juros_parcela');
+$juros_da_parcela  = Mage::getStoreConfig('parcelamento/parcelamento_general/parcelamento_juros');
+
+
+$quantidade_parcelas = Mage::getStoreConfig('parcelamento/parcelamento_general/parcelamento_xparcelas');
+$desconto = Mage::getStoreConfig('parcelamento/parcelamento_general/parcelamento_desconto');
+$valor_parcela = number_format($preco/$parcela_com_juros,2,',','.');
+$preco_avista = ($preco/100)*(100-$desconto);
+
+
+echo '<div id="parcelamento">R$ '.number_format($preco,2,',','.').' em até '.$parcela_com_juros.'x de R$ '.$valor_parcela.' no cartão <br/>R$ '.number_format($preco_avista,2,',','.').' à vista com '.$desconto.'% de desconto</div>';
+?>
+
+
+
+
+<!-- parcelas -->
+
+
+
+<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+<i class="fa fa-chevron-down"></i> Ver parcelas
+</button>
+
+<div class="collapse" id="collapseExample">
+
+<br />
+
+<style type="text/css">
+#parcelamento{clear:both;padding-top:8px;}
+</style>
+
+
+
+
+<table class="table table-bordered table-condensed table-responsive">
+
+  <thead>
+    <th colspan="2">
+			<br />
+      <p class="text-center">
+				Valor das parcelas
+			</span>
+    </th>
+  </thead>
+
+
+
+
+<tbody>
+
+  <?php
+
+  $parcelas   = $quantidade_parcelas;
+  $counter    = 0;
+
+
+  for ($i=1; $parcelas+1 > $i ; $i++) {
+		$counter++;
+
+	   if($counter != 1) {
+
+    $produto   = $_product->getPrice();
+
+    if($i>$parcela_com_juros )
+    {
+      $juros   = $juros_da_parcela/100;
+      $valor   = $produto/$i;
+      $calculo_juros = ($juros*$valor)+($valor);
+      $calculo = $calculo_juros;
+    }
+    else
+    {
+      $calculo  = $produto/$i;
+    }
+
+  ?>
+
+  <tr>
+
+    <td><?php echo $i.'x de ' ?></td>
+    <td><?php echo 'R$ '.number_format($calculo,'2','.',',');?><?php echo ($i>$parcela_com_juros )?'  com juros':''; ?></td>
+
+  </tr>
+
+<?php } } ?>
+
+</tbody>
+
+</table>
+
+
+
+</div>
+
+<!-- parcelas -->
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+var $j = jQuery.noConflict();
+$j(document).ready(function(){
+$j(".input-box select").change(function(){
+$j('#parcelamento').html('<img src="<?php echo $this->getSkinUrl('images/newer7_parcelamento/ajax-loader.gif'); ?>"> Carregando');
+$j.ajax({
+url: '<?php echo $this->getUrl("parcelamento")?>',
+type:"POST",
+data:({"preco": $j('.price-box span span.price').html()}),
+success: function(data) {
+$j('#parcelamento').html(data);
+}
+})
+})
+})
+//]]>
+</script>
